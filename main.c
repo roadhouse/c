@@ -16,6 +16,7 @@ char* build_shodan_url(char* search_query) {
 
 void fetch_shodan_data(char* url) {
   CURL *curl;
+  CURLcode res;
  
   curl = curl_easy_init();
 
@@ -32,8 +33,7 @@ void fetch_shodan_data(char* url) {
   }
 }
 
-/* compiling: gcc getcurl.c -o getcurl -lcurl */
-int main(int argc, char *argv[])
+int main()
 {
   char* search_query = "android%20debug%20bridge%20product:%22Android%20Debug%20Bridge%22";
   char* url = build_shodan_url(search_query);
