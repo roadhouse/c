@@ -44,12 +44,22 @@ char* shodan_data_filename() {
   return filename;
 }
 
-int main()
-{
+void persist_shodan_data(char* file_content) {
+  FILE* fptr;
+  fptr = fopen(shodan_data_filename(), "w");
+
+  if (fptr == NULL) {
+    printf("failed to persist data");
+  } else {
+    fprintf(fptr, "%s\n", file_content);
+    fclose(fptr);
+  }
+}
+
+int main() {
   char* search_query = "android%20debug%20bridge%20product:%22Android%20Debug%20Bridge%22";
   printf("shodan url: %s\n", build_shodan_url(search_query));
-
   printf("filename: %s\n", shodan_data_filename());
-
+  persist_shodan_data("jean");
   return 0;
 }
