@@ -1,3 +1,4 @@
+// in ubuntu 24.04: sudo apt-get install libcurl4-openssl-dev
 #include <stdio.h>
 #include <curl/curl.h>
 #include <stdlib.h>
